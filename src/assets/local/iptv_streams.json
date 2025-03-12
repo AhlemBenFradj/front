@@ -1,0 +1,32 @@
+[
+  {
+    "_id": {
+      "$oid": "676561e447a4e352126d1e31"
+    },
+    "name": "BBC",
+    "category": "news",
+    "country": "QA",
+    "lang": "eng",
+    "live_url": "http://92.114.85.81:8000/play/a00a/index.m3u8"
+  },
+  {
+    "_id": {
+      "$oid": "676561e447a4e352126ds1e31"
+    },
+    "name": "Alarabiya",
+    "category": "news",
+    "country": "QA",
+    "lang": "eng",
+    "live_url": "https://live.alarabiya.net/alarabiapublish/alarabiya.smil/playlist.m3u8"
+  },
+  {
+    "_id": {
+      "$oid": "676561e447a4e352126d1e3d1"
+    },
+    "name": "2GB",
+    "category": "news",
+    "country": "QA",
+    "lang": "eng",
+    "live_url": "https://2gblive.akamaized.net/hls/live/2033805/2GB/index.m3u8"
+  }
+]

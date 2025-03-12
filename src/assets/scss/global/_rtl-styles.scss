@@ -1,0 +1,187 @@
+.rtl {
+    // .side-menu__item.active {
+    //     .angle {
+    //         transform: rotate(90deg);
+    //     }
+    // }
+
+    // .side-menu__item {
+    //     .angle {
+    //         transform: rotate(180deg);
+    //     }
+    // }
+
+    .slide-item {
+        .sub-angle {
+            transform: rotate(180deg);
+        }
+    }
+
+    .fc-direction-ltr .fc-button-group>.fc-button:not(:first-child),
+    .fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .fc-direction-ltr .fc-button-group>.fc-button:first-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 5px !important;
+        border-top-left-radius: 0;
+        border-top-right-radius: 5px !important;
+        margin-left: inherit;
+        margin-right: -1px;
+    }
+
+    .fc-direction-ltr .fc-button-group>.fc-button:last-child {
+        border-bottom-left-radius: 5px !important;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 5px !important;
+        border-top-right-radius: 0;
+    }
+
+    .fc-icon-chevron-right {
+        transform: rotate(180deg);
+    }
+
+    .fc-icon-chevron-left {
+        transform: rotate(180deg);
+    }
+
+    .chat-profile-dropdown {
+        left: 0;
+        right: inherit;
+    }
+
+    .fc-direction-ltr .fc-toolbar>*> :not(:first-child) {
+        margin-right: 0.75em;
+        margin-left: 0;
+    }
+
+    .alert-dismissible {
+        padding-left: 3.8125rem;
+    }
+
+    .fc-direction-ltr {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    .toast-header .btn-close {
+        margin-left: calc(-.5 * var(--bs-toast-padding-x));
+        margin-right: var(--bs-toast-padding-x);
+    }
+
+    .apexcharts-legend-marker {
+        margin-left: 3px;
+    }
+
+    .product-timeline ul li {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .MuiTreeItem-label {
+        padding-right: 4px;
+    }
+
+    .MuiSvgIcon-root {
+        margin-left: 8px;
+    }
+
+    .MuiCollapse-root {
+        margin-right: 17px;
+        margin-left: 0;
+    }
+
+    .page-item.active .page-link {
+        margin-left: 4px;
+        margin-right: 0;
+    }
+    .profile-menu {
+        right: auto !important;
+        left: 0 !important;
+        transform: unset !important;
+    }
+    .accordion-button::after {
+        margin-right: auto !important;
+        margin-left: inherit !important;
+    }
+    .pagination {
+        padding-right: inherit !important;
+        padding-left: 0 !important;
+    }
+
+        .breadcrumb-style2 .breadcrumb-item+.breadcrumb-item::before {
+            transform: rotate(180deg);
+        }
+    
+        .accordion-button {
+            text-align: right;
+        }
+    
+        .MuiInputBase-root {
+            .MuiInputBase-input {
+                text-align: right;
+            }
+        }
+    
+        .dropzone-main {
+            right: 30px;
+            left: 0;
+        }
+    }
+
+[dir='rtl'] {
+    .slick-prev {
+        right: 25px !important;
+        left: auto !important;
+    }
+
+    .slick-next {
+        right: auto !important;
+        left: 5px !important;
+    }
+
+    .swiper-android .swiper-slide,
+    .swiper-wrapper {
+        transform: translate3d(0px, 0, 0) !important;
+    }
+ .form-switch label {
+        margin-inline-start: 1rem !important;
+    }
+}
+
+.rtl {
+    .fc-icon-chevron-right {
+        transform: rotate(360deg) !important;
+    }
+    .fc-icon-chevron-left {
+        transform: rotate(360deg) !important;
+    }
+    .collapsabletreeview .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
+        transform: rotate(180deg) !important;
+    }
+    .tree1 .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
+        transform: rotate(180deg) !important;
+    }
+    @media (min-width:992px) {
+        .flag_content .dropdown-menu.show {
+            transform: translate(275px, 65px) !important;
+        }
+        .main-header-message .dropdown-menu.show {
+            transform: translate(-19px, 65px) !important;
+        }
+        .main-header-notification .dropdown-menu.show {
+            transform: translate(-14px, 65px) !important;
+        }
+        .main-profile-menu .dropdown-menu.show {
+            transform: translate(-2px, 75px) !important;
+        }
+    }
+    .table {
+        margin-inline-end: 1px;
+    }
+
+}

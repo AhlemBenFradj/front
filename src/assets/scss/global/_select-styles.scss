@@ -1,0 +1,10 @@
+.Select-sm__control {
+    border: 1px solid $border  !important;
+}
+
+.Select-sm__control.Select-sm__control--is-disabled {
+    background-color: $background  !important;
+}
+.Select-sm__control--is-focused {
+    box-shadow: 0 0 0 1px var(--primary-bg-color) !important;
+}

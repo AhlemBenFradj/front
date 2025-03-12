@@ -1,0 +1,35 @@
+@charset "UTF8";
+
+// css variables
+@use "./assets/scss/variables";
+
+// custom css 
+@use "./assets/css/style.css";
+@use "./assets/css/plugins.css";
+@use "./assets/css/icons.css";
+@use "./assets/css/animate.css";
+@use "./assets/switcher/css/switcher.css";
+@use "./assets/switcher/demo.css";
+
+// Swiper Css
+@use "swiper/css";
+@use "swiper/css/effect-cards";
+@use "swiper/css/free-mode";
+@use "swiper/css/navigation";
+@use "swiper/css/thumbs";
+@use 'react-toastify/dist/ReactToastify.css';
+
+// Rodal Animation Css
+@use "rodal/lib/rodal.css";
+
+// Date Picker Css
+@use "react-datepicker/dist/react-datepicker.css";
+
+// Suneditor Css
+@use "suneditor/dist/css/suneditor.min.css";
+
+// Leaflet map Css
+@use "leaflet/dist/leaflet.css";
+
+// Filepond upload Css
+@use 'filepond/dist/filepond.min.css';

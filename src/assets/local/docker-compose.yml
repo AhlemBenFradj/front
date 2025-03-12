@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  producer:
+    build: .
+    command: [ "python", "producer.py" ]
+    networks:
+      - app-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  consumer:
+    build: .
+    command: [ "python", "consumer.py" ]
+    networks:
+      - app-network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./keyword.json:/app/keyword.json
+    deploy:
+      replicas: 3 # Scale up consumers
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  app:
+    build: .
+    command: [ "python", "app.py" ]
+    networks:
+      - app-network
+    ports:
+      - "5000:5000"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    volumes:
+      - ./keyword.json:/app/keyword.json
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "192.168.1.0/24"

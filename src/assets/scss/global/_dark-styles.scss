@@ -1,0 +1,490 @@
+.dark-theme {
+    .Select-sm__control {
+        background-color: $dark-theme  !important;
+        color: $white  !important;
+        border: 1px solid $dark-border  !important;
+    }
+
+    .Select-sm__control.Select-sm__control--is-disabled {
+        background-color: $white-2  !important;
+    }
+
+    .Select-sm__menu {
+        background-color: $dark-body  !important;
+        color: $white  !important;
+    }
+
+    .Select-sm__input-container,
+    .Select-sm__single-value {
+        color: #fff !important;
+    }
+
+    .Select__multi-value {
+        background-color: $white-2  !important;
+    }
+
+    .Select__multi-value__label {
+        color: #fff !important;
+    }
+
+    .Select2__multi-value {
+        background-color: $white-2  !important;
+    }
+
+    .Select2__multi-value__label {
+        color: #fff !important;
+    }
+
+    .rodal-dialog {
+        color: $white  !important;
+        background: $dark-theme  !important;
+    }
+
+    .rmsc .gray {
+        color: $white-7  !important;
+    }
+    .swal2-popup {
+        background-color: $dark-theme  !important;
+        color: $white  !important;
+    }
+
+    .swal2-styled.swal2-confirm {
+        background-color: $primary  !important;
+        border: 1px solid $dark-border  !important;
+    }
+    .apexcharts-tooltip-title {
+        background: #141b2d !important;
+    }
+
+    .apexcharts-legend,
+    .apexcharts-legend-text {
+        color: $white  !important;
+    }
+
+    .apexcharts-menu,
+    .apexcharts-menu-item {
+        background: #141b2d !important;
+        border: 1px solid $dark-border;
+    }
+    .MuiSlider-markLabel {
+        color: $white  !important;
+    }
+
+    .rangeslider {
+        background: $dark-theme  !important;
+    }
+    #checkoutsteps ul .number {
+        background-color: $dark-body;
+    }
+
+    .data-table-extensions>.data-table-extensions-filter>.filter-text {
+        border-bottom: 1px solid $dark-border;
+    }
+
+    .accordion-body {
+        background: $dark-theme;
+        color: $white;
+    }
+
+    .accordion-header::after {
+        background: $dark-theme;
+        color: $white;
+    }
+    .tabs-style-4 .nav.panel-tabs .nav-item a,
+    .tabs-menu .panel-tabs .nav-item .nav-link {
+        background: $dark-body;
+        color: $white;
+    }
+
+    .main-content-contacts {
+        .nav-tabs .nav-item .nav-link {
+            background-color: transparent;
+            color: $white;
+        }
+    }
+
+    .contact-icon:hover {
+        background: #141b2d;
+        color: $primary;
+    }
+
+    .success-widget,
+    .danger-widget,
+    .warning-widget {
+        h3 {
+
+            &:before,
+            &:after {
+                background: $dark-border;
+            }
+        }
+    }
+
+    .accordion-dark .accordion-button:not(.collapsed) {
+        background: #1f2940 !important;
+        color: #fff !important;
+    }
+
+    .accordion-item {
+        border: 1px solid $dark-border  !important;
+    }
+    .rti--container {
+        background-color: $dark-body  !important;
+        border: 1px solid $dark-border  !important;
+    }
+
+    .rti--input {
+        background-color: $dark-body  !important;
+        color: $white  !important;
+    }
+
+    .css-1okebmr-indicatorSeparator {
+        background-color: $dark-border;
+    }
+
+    .chat-profile {
+        color: #fff;
+    }
+    .btn-light-gradient {
+        color: #000;
+
+    }
+
+    .btn-light-gradient:hover {
+        color: #000;
+        background: linear-gradient(120deg, #c1c7d6 0%, #e0e5f1 100%);
+        border-color: #cdd2de;
+    }
+    .Usa-Map svg g text {
+        fill: $white  !important;
+    }
+    .MuiRating-icon.MuiRating-iconEmpty {
+        color: $white  !important;
+    }
+
+    .Usa-Map {
+        svg g text {
+            fill: $white  !important;
+            font-size: larger !important;
+        }
+
+        .rsm-geography {
+            fill: #5a6970 !important;
+        }
+    }
+    .settings-main-icon i {
+        background-color: $primary  !important;
+    }
+
+    .MuiSlider-valueLabelLabel {
+        color: $white  !important;
+    }
+    .main-table-reference.table {
+        td:first-child {
+            background-color: #141b2d;
+        }
+    }
+
+    .show>.btn-light.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1);
+        color: #fff !important;
+    }
+
+    @media (min-width: 768px) {
+        .main-nav .nav-link+.nav-link {
+            border-top: 0;
+        }
+    }
+
+    .accordion-item {
+        background-color: transparent;
+    }
+
+    .timeline-wrapper-dark .timeline-panel:before,
+    .timeline-wrapper-dark .timeline-badge {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    // .Select-sm__menu {
+    //     .Select-sm__option {
+    //         &:is(.active, :hover) {
+    //             background-color: $primary !important;
+    //         }
+    //     }
+
+    //     .Select-sm__option {
+    //         background-color: $dark-body !important;
+    //     }
+    // }
+    .Select-sm__menu {
+        .Select-sm__option:active {
+            background-color: $primary !important;
+        }
+        .Select-sm__option:hover {
+            background-color: $primary !important;
+        }
+    }
+    .multi-select .dropdown-content {
+        background-color: $dark-body;
+    
+        div {
+            background-color: $dark-body;
+            label {
+                &:hover, &.selected {
+                    background-color: $white-08;
+                }
+            }
+        }
+    }
+    .fc .fc-list-sticky .fc-list-day > * {
+        background: var(--fc-page-bg-color, transparent);
+    }
+   h1, h2, h3, h4, h5, h6, p {
+        color: $white;
+    }
+ table th, table td {
+    color: $white;
+ }
+ .breadcrumb {
+    background-color: $dark-theme;
+ }
+ .accordion-button {
+    color: $white;
+ }
+ 
+.card-header, .card-body {
+    color: $dark-color;
+}
+.Select__control .Select__menu .Select__option {
+    background-color: $dark-body !important;
+    &.selected {
+        background-color: $dark-body;
+    }
+}
+.Select__control .Select__option.selected {
+    background-color: $primary  !important;
+    color: #000 !important;
+}
+.Select__control:hover {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+.Select__control {
+    background-color: $dark-body !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.Select__menu {
+    background-color: $dark-body !important;
+}
+.Select__option:hover {
+    background: $primary  !important;
+    color: $white;
+}
+.Select__option--is-selected,
+.Select__option--is-focused {
+    background: $primary  !important;
+    color: $white  !important;
+}
+.Select__indicator-separator {
+    background-color: var(--dark-border);
+}
+.Select__indicator.Select__dropdown-indicator {
+    color: var(--dark-border);
+}
+}
+
+
+.dark-theme 
+.dTree svg,
+.transparent-theme .dTree svg {
+    filter: invert(1);
+}
+
+.fc.fc-media-screen .fc-button-primary,
+.fc.fc-media-screen .fc-button-primary:hover {
+    background-color: $primary;
+    border-color: $primary;
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: $primary  !important;
+    border-color: $primary  !important;
+    opacity: 0.9;
+}
+
+.fc.fc-media-screen .fc-button-primary:disabled {
+    background-color: $primary  !important;
+    border-color: $primary  !important;
+    opacity: 0.5;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th,
+.fc-theme-standard .fc-scrollgrid {
+    border-color: $border  !important;
+}
+
+.list-calender .fc.fc-media-screen .fc-view-harness {
+    height: 270px !important;
+}
+
+.dark-theme .fc-theme-standard td,
+.dark-theme .fc-theme-standard th,
+.dark-theme .fc-theme-standard .fc-scrollgrid {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-theme {
+    .card.search-result {
+        .card-header+.list-group .list-group-item:first-child {
+            border-block-start: 1px solid $dark-border;
+        }
+    }
+    .fc .fc-list-event:hover td {
+        background-color: $dark-body;
+    }
+    .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium {
+        color: $dark-color;
+    }
+    .form-check-input {
+        background-color: $dark-body;
+    }
+    .nav-tabs .nav-item .nav-link {
+        color: $dark-color;
+    }
+    .panel-tabs {
+        border-bottom: 1px solid $dark-border !important;
+    }
+    .filepond--drop-label {
+        background-color: $dark-body;
+        color: $dark-color;
+    }
+    .accordion-button {
+        background-color: $dark-body;
+    }
+    .toast-header .btn-close {
+        filter: invert(1);
+    }
+    .ScrollbarsCustom-Thumb.ScrollbarsCustom-ThumbY {
+        background-color: #3f414c !important;
+    }
+    .react-datepicker-wrapper input {
+        background-color: $dark-body;
+        color: $dark-color;
+    }
+    .react-datepicker__month-container {
+        background-color: $dark-body;
+        color: $dark-color !important;
+    }
+    .react-datepicker__header {
+        background-color: $dark-body !important;
+        border-bottom: 1px solid $dark-border !important;
+        color: $dark-color !important;
+    }
+    .react-datepicker {
+        border: 1px solid $dark-border !important;
+        background-color: $dark-body;
+        color: $dark-color;
+    }
+    .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+        color: $dark-color;
+    }
+    .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        color: $dark-color;
+    }
+    .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        color: $dark-color;
+    }
+    .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list {
+        background-color: $dark-body;
+        color: $dark-color;
+    }
+    .react-datepicker__time-container {
+        border-left: 1px solid $dark-border;
+    }
+    .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after {
+        border-bottom-color: $dark-body !important;
+    }
+    .sun-editor {
+        border: 1px solid $dark-border;
+        background-color: $dark-body;
+        .se-toolbar {
+            background-color: $dark-body;
+            outline: 1px solid $dark-border;
+        }
+        .se-resizing-bar .se-navigation {
+            color: $dark-color;
+            background: $dark-body;
+        }
+        .se-resizing-bar {
+            border-top: 1px solid $dark-border;
+            background-color: $dark-body;
+        }
+        .se-btn-module-border {
+            border: 1px solid $dark-border;
+        }
+        .se-btn-select .txt {
+            color: $dark-color;
+        }
+    }
+    .sun-editor-editable {
+        color: $dark-color;
+        background-color: $dark-body;
+    }
+    .sun-editor .se-svg, .sun-editor button>svg {
+        fill: $dark-color;
+    }
+    .sun-editor .se-btn:enabled:focus, .sun-editor .se-btn:enabled:hover {
+        background-color: $dark-theme;
+        border-color: $dark-border;
+        outline: 0 none;
+    }
+    .rmsc .dropdown-container {
+        background-color: $dark-body;
+        border: 1px solid $dark-border;
+    }
+    .Select2__control {
+        background-color: $dark-body;
+        border-color: $dark-border;
+    }
+    .react-tel-input .form-control {
+        background-color: $dark-body;
+        border: 1px solid $dark-border !important;
+    }
+    .react-tel-input .flag-dropdown {
+        border: 1px solid $dark-border !important;
+        background-color: $dark-body !important;
+    }
+    .filepond--panel-root {
+        background-color: $dark-body !important;
+    }
+    .steps.basicsteps {
+        .btn, .sp-container button {
+            color: $dark-color !important;
+        }
+    }
+    @media (min-width: 1200px) {
+        .bd-xl-r {
+            border-inline-end: 1px solid $dark-border;
+        }
+    }
+    .form-check-input:checked {
+        background-color: $primary;
+        border-color: $primary;
+    }
+    .Select-sm__placeholder {
+        color: $dark-color !important;
+    }
+    .checkout-page .checkout-btns .btn.previous {
+        border: 1px solid $dark-border;
+        color: $dark-color;
+    }
+    .dropzone,
+    .file-upload2 {
+        border: 2px dashed $dark-border;
+    }
+    .card-pay .nav-tabs .nav-item .nav-link {
+        background-color: $dark-body;
+        margin: 0;
+    }
+}
