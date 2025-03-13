@@ -21,30 +21,45 @@ const Tabs = () => {
 	const [profiles, setProfiles] = useState([]);
 	const [likeCount, setLikeCount] = useState(1);
 
-	// Fetch profiles and sort them
+
 	const fetchProfiles = async () => {
 		try {
-			const response = await fetch('https://3387-197-27-123-45.ngrok-free.app/profiles');
-			if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-			const data = await response.json();
+			const response = await fetch('http://164.68.114.70:5000/profiles');
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+
+			const rawData = await response.text(); // Get raw response as text
+			console.log("Raw API response:", rawData);
+
+			const data = JSON.parse(rawData); // Convert raw text to JSON
+
 			console.log('Full API response:', data);
+
+			if (!data.data) {
+				console.error("Expected 'data' key not found in response:", data);
+			}
 
 			let profiles = Array.isArray(data.data) ? data.data : [];
 
-			// Sort profiles alphabetically
-			profiles.sort((a, b) => a.name.localeCompare(b.name));
-
 			console.log("Sorted profiles:", profiles.map(profile => profile.name));
+
 			setProfiles(profiles);
 		} catch (error) {
 			console.error('Error fetching profiles:', error);
 			setProfiles([]);
 		}
 	};
+
+	// Run on component mount
 	useEffect(() => {
 		fetchProfiles();
 	}, []);
+
+
+
 
 
 	const handleAgentCountChange = (e) => {
@@ -61,7 +76,8 @@ const Tabs = () => {
 
 	const save_tweetLike = async (url, profileId) => {
 		try {
-			const response = await fetch('http://164.68.114.70:50000/save_tweetLike', {
+
+			const response = await fetch('http://164.68.114.70:5000/save_tweetLike', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -69,15 +85,24 @@ const Tabs = () => {
 				body: JSON.stringify({ url, profileId })
 			});
 
+
 			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
+				throw new Error(`HTTP error! Status: ${response.status}`);
 			}
 
-			const result = await response.json();
+			const rawData = await response.text(); // Get raw response text
+			alert(`Response received: ${rawData.substring(0, 100)}...`); // Show the first 100 characters
+
+			const result = JSON.parse(rawData); // Parse the JSON
+			alert(`Tweet saved successfully! Response: ${JSON.stringify(result)}`);
+
+			console.log("Server Response:", result);
 		} catch (error) {
-			console.error('Error saving tweet', error);
+			alert(`Error saving tweet: ${error}`);
+			console.error("Error saving tweet:", error);
 		}
 	};
+
 
 	const Repost_tweet = async (url, profileId) => {
 		try {
@@ -112,7 +137,7 @@ const Tabs = () => {
 			const response = await fetch('http://207.180.254.58:8333/api/chat/completions', {
 				method: 'POST',
 				headers: {
-					'Authorization': `Bearer ${process.env.REACT_APP_DEEPSEEK_API_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhmMzgyNWFhLTM4NDQtNDU1OC1hMDE5LTZhMTExMTIwMTg4YyJ9.4SPbNgNPK0DCZzYGIVHfN-NuIWwe_12ou_kOKUchico'}`,
+					'Authorization': `Bearer ${'sk-cf9254cc31d0480cb1c06a564dba8897'}`,
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
@@ -120,7 +145,7 @@ const Tabs = () => {
 					messages: [
 						{
 							role: "system",
-							content: `Generate exactly ${agentCount} different  comment variations based on the user's input. Return unique each variation on a separate line without numbering, symbols, or additional text.`
+							content: `Generate exactly ${agentCount} different comment variations based on the user's input. Return unique each variation on a separate line without numbering, symbols, or additional text.`
 						},
 						{
 							role: "user",
@@ -238,7 +263,7 @@ const Tabs = () => {
 
 	const saveUrlAndComment = async (tweetUrl, comment, profileId) => {
 		try {
-			const response = await fetch('http://164.68.114.70:50000/save_url_and_comment', {
+			const response = await fetch('http://164.68.114.70:5000/save_url_and_comment', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -365,6 +390,9 @@ const Tabs = () => {
 																							</>
 																						)}
 																					</Button>
+																				</Col>
+																				<Col sm={4}>
+
 																				</Col>
 																			</Row>
 																		</Form.Group>
