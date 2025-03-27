@@ -1,78 +1,262 @@
-import React from 'react';
-import { Card, Col, Nav, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Card, Col, Nav, Row, Container, Tab, Form, Button, Toast, Accordion } from 'react-bootstrap';
 import Pageheader from '../../../layouts/layoutcomponents/pageheader';
-import { Setting } from '../../../common/commondata';
+import { Savetable } from '../../../common/tablesdata';
+import { ProfilesX } from '../../elements/profiles/profilesX';
 
 const Settings = () => {
+  const [profileName, setProfileName] = useState('');
+  const [browserType, setBrowserType] = useState('');
+  const [operatingSystem, setOperatingSystem] = useState('');
+  const [proxyEnabled, setProxyEnabled] = useState(true);
+  const [error, setError] = useState('');
+
+  const syncProfiles = async () => {
+    try {
+      const response = await fetch('http://164.68.114.70:5000/twitter/sync-profiles', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to sync profiles');
+      }
+
+      const data = await response.json();
+      console.log('Profiles synced successfully:', data);
+    } catch (error) {
+      console.error('Error syncing profiles:', error);
+    }
+  };
+  const combineBoxesCredentials = async () => {
+    try {
+      const response = await fetch('http://164.68.114.70:5000/twitter/combine_boxes_credentials', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to combine boxes and credentials');
+      }
+
+      const data = await response.json();
+      console.log('Boxes and credentials combined successfully:', data);
+    } catch (error) {
+      console.error('Error combining boxes and credentials:', error);
+    }
+  };
+
+
+
+  const handleSaveBox = async (event) => {
+    event.preventDefault();
+    if (!profileName || !browserType || !operatingSystem) {
+      setError('All fields are required.');
+      return;
+    }
+    setError('');
+    const profileData = {
+      profileName,
+      browserType,
+      operatingSystem,
+      proxyEnabled,
+    };
+    console.log(profileData);
+    try {
+      const response = await fetch('http://164.68.114.70:5000/save_box', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(profileData),
+      });
+      console.log(response);
+
+      if (response.ok) {
+        console.log('Profile saved successfully');
+        syncProfiles();
+        combineBoxesCredentials();
+      } else {
+        console.error('Failed to save profile');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
-    <div>
-      <Pageheader titles="Pages" active="Settings" />
+    <Container fluid>
+      <Pageheader titles="Profiles" active="Browser" />
       <Row>
-        <Col lg={4} xl={3}>
+        <Col lg={12}>
           <Card className="custom-card">
-            <Card.Header>
-              <Card.Title>Settings</Card.Title>
-            </Card.Header>
-            <Card.Body className="main-content-left main-content-left-mail pt-0 ">
-              <div className="main-settings-menu">
-                <Nav className="main-nav-column" activeKey="main">
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="main"><i className="fe fe-home"></i> Main</Nav.Link></Nav.Item>
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="web"><i className="fe fe-grid"></i> Web Apps</Nav.Link></Nav.Item>
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="gen"><i className="fe fe-server"></i> General</Nav.Link></Nav.Item>
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="com"><i className="fe fe-globe"></i> Components</Nav.Link></Nav.Item>
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="pag"><i className="fe fe-layers"></i> Pages</Nav.Link></Nav.Item>
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="lan"><i className="fe fe-flag"></i> Language & Region</Nav.Link></Nav.Item>
-                  <Nav.Item><Nav.Link className="mb-2" eventKey="not"><i className="fe fe-bell"></i> Notifications</Nav.Link></Nav.Item>
+            <Card.Body>
+              <Tab.Container defaultActiveKey="Twitter">
+                <Nav variant="tabs" className="flex-column flex-sm-row">
+                  <Nav.Item className="flex-sm-fill text-sm-center">
+                    <Nav.Link eventKey="Twitter">
+                      <i className="fe fe-home"></i> Twitter Profiles
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className="flex-sm-fill text-sm-center">
+                    <Nav.Link eventKey="web">
+                      <i className="fe fe-grid"></i> Facebook Profiles
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className="flex-sm-fill text-sm-center">
+                    <Nav.Link eventKey="gen">
+                      <i className="fe fe-server"></i> Instagram Profiles
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item className="flex-sm-fill text-sm-center">
+                    <Nav.Link eventKey="com">
+                      <i className="fe fe-globe"></i> Create New Box
+                    </Nav.Link>
+                  </Nav.Item>
                 </Nav>
-              </div>
+
+                <Tab.Content className="mt-3">
+                  <Tab.Pane eventKey="Twitter">
+                    <Card>
+                      <Card.Header>
+                        <Card.Title as="h3">Twitter Profiles</Card.Title>
+                      </Card.Header>
+                      <Card.Body>
+                        <ProfilesX />
+                      </Card.Body>
+                    </Card>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="web">
+                    <Card>
+                      <Card.Header>
+                        <Card.Title as="h3">Facebook Profiles</Card.Title>
+                      </Card.Header>
+                      <Card.Body>
+                        <p>Manage your Facebook profiles here.</p>
+                        <Savetable />
+                      </Card.Body>
+                    </Card>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="gen">
+                    <Card>
+                      <Card.Header>
+                        <Card.Title as="h3">Instagram Profiles</Card.Title>
+                      </Card.Header>
+                      <Card.Body>
+                        <p>Manage your Instagram profiles here.</p>
+                        <Savetable />
+                      </Card.Body>
+                    </Card>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="com">
+                    <Card>
+                      <Card.Header>
+                        <Card.Title as="h3">Create New Box</Card.Title>
+                      </Card.Header>
+                      <Card.Body>
+                        {/* <Accordion defaultActiveKey="0" flush>
+                          <Accordion.Item eventKey="0">
+                            <Accordion.Header>Important Note</Accordion.Header>
+                            <Accordion.Body>
+                              Use the following abbreviations: PT for Twitter, PF for Facebook, and PI for Instagram.
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion> */}
+                        {error && (
+                          <div className="demo-static-toast position-fixed bottom-0 end-0 p-3">
+                            <Toast className="bg-danger" onClose={() => setError('')} show={!!error} delay={3000} autohide>
+                              <Toast.Header>
+                                <h6 className="tx-14 mg-b-0 mg-r-auto">Notification</h6>
+                                <small className="text-muted">Just now</small>
+                              </Toast.Header>
+                              <Toast.Body style={{ color: 'white' }}>{error}</Toast.Body>
+                            </Toast>
+                          </div>
+                        )}
+                        <Form onSubmit={handleSaveBox}>
+                          <Row>
+                            <Col md={6}>
+                              <Form.Group controlId="formProfileName">
+                                <Form.Label>Box Name</Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  placeholder="Enter profile name"
+                                  aria-label="Profile Name"
+                                  value={profileName}
+                                  onChange={(e) => setProfileName(e.target.value)}
+                                />
+                              </Form.Group>
+
+                              <Form.Group controlId="formBrowserType">
+                                <Form.Label>Browser Type</Form.Label>
+                                <Form.Control
+                                  as="select"
+                                  aria-label="Select Browser Type"
+                                  value={browserType}
+                                  onChange={(e) => setBrowserType(e.target.value)}
+                                >
+                                  <option value="" disabled>Select a browser</option>
+                                  <option value="chrome">Chrome</option>
+                                  <option value="Yandex">Yandex</option>
+                                  <option value="edge">Edge</option>
+                                  <option value="brave">Brave</option>
+                                  <option value="opera">Opera</option>
+                                </Form.Control>
+                              </Form.Group>
+                            </Col>
+                            <Col md={6}>
+                              <Form.Group controlId="formOS">
+                                <Form.Label>Operating System</Form.Label>
+                                <Form.Control
+                                  as="select"
+                                  aria-label="Select Operating System"
+                                  value={operatingSystem}
+                                  onChange={(e) => setOperatingSystem(e.target.value)}
+                                >
+                                  <option value="" disabled>Select an OS</option>
+                                  <option value="win">Windows</option>
+                                  <option value="mac">MacOS</option>
+                                  <option value="linux">Linux</option>
+                                  <option value="android">Android</option>
+                                  <option value="ios">iOS</option>
+                                </Form.Control>
+                              </Form.Group>
+
+                              <Form.Group controlId="formProxyEnabled" className="mt-4">
+                                <Form.Check
+                                  type="checkbox"
+                                  label="Enable Proxy"
+                                  aria-label="Enable Proxy"
+                                  checked={proxyEnabled}
+                                  onChange={(e) => setProxyEnabled(e.target.checked)}
+                                />
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <Button
+                            className="mt-4 float-end"
+                            variant="primary"
+                            type="submit"
+                            aria-label="Save Box"
+                          >
+                            Save Box
+                          </Button>
+                        </Form>
+                      </Card.Body>
+                    </Card>
+                  </Tab.Pane>
+                </Tab.Content>
+              </Tab.Container>
             </Card.Body>
           </Card>
         </Col>
-        <Col lg={8} xl={9}>
-          <Card className="custom-card">
-            <Card.Header className="">
-              <Card.Title>Overview</Card.Title>
-              <p>Used to customize and manage all settngs about this Dashboard</p>
-            </Card.Header>
-          </Card>
-          <Row>
-            {Setting.map((idx) => (
-              <Col key={Math.random()} lg={12} xl={6} md={12} sm={12} className="p-2">
-                <Card>
-                  <Card.Body>
-                    <Row>
-                      <Col lg={12}>
-                        <div className="d-flex">
-                          <div className="settings-main-icon me-4 mt-1">{idx.icon}</div>
-                          <div>
-                            <p className="tx-20 font-weight-semibold d-flex mb-0">{idx.title}</p>
-                            <p className="tx-13 text-muted mb-0">{idx.description}</p>
-                          </div>
-                        </div>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                  <Card.Footer className="p-3">
-                    <Link to="#" className="tx-14 mb-0">Go to Settings</Link>
-                    <label className="form-switch float-end mb-0">
-                      <Link to="#" className="tx-14 mb-0 me-2">Restore default</Link>
-                      <input type="checkbox" name="form-switch-checkbox3" className="form-switch-input" />
-                      <span className="form-switch-indicator custom-radius"></span>
-                    </label>
-                  </Card.Footer>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Col>
       </Row>
-    </div>
-  )
+    </Container >
+  );
 };
-
-Settings.propTypes = {};
-
-Settings.defaultProps = {};
 
 export default Settings;

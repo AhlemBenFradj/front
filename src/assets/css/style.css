@@ -28020,35 +28020,44 @@ a.tag-addon:hover {
         width: 230px;
     }
 }
-
 .app-sidebar__toggle {
-    color: #fff;
+    color: #272746;
     -webkit-transition: background-color 0.3s ease;
     -o-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
     z-index: 1;
     margin-inline-end: 10px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-size: 22px;
-    color: #272746;
     position: relative;
-    line-height: 23px;
     outline: none;
     height: 40px;
     width: 40px;
-    background: transparent;
+    background: #E9EFF9 !important;
     margin: auto;
-    text-align: center;
-    border-radius: 50%;
+    border-radius: 4px;
+    padding: 8px;
+    gap: 5px;
 }
 
-.app-sidebar__toggle:hover {
-    color: #fff;
+/* Creating the 3 horizontal bars */
+.app-sidebar__toggle::before,
+.app-sidebar__toggle::after,
+.app-sidebar__toggle span {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 24px;
+    background-color: #fff;
+    border-radius: 2px;
 }
 
-.app-sidebar__toggle:focus,
-.app-sidebar__toggle:hover {
-    text-decoration: none;
+/* Adding the middle bar using a span element */
+.app-sidebar__toggle span {
+    position: relative;
 }
 
 @media (max-width: 991px) {

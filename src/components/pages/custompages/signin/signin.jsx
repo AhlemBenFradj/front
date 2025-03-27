@@ -1,32 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Imagesdata } from '../../../../common/commonimages';
 
 const SignIn = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [error, setError] = useState('');
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
-			const response = await fetch('/api/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ email, password }),
-			});
-			if (!response.ok) {
-				throw new Error('Login failed');
-			}
-		} catch (err) {
-			setError(err.message);
-		}
-	};
-
 	return (
+
 		<div>
 			<div className="">
 				<Row className="no-gutter">
@@ -53,29 +32,16 @@ const SignIn = () => {
 												<div className="main-signup-header">
 													<h2>Welcome back!</h2>
 													<h5 className="fw-semibold mb-4">Please sign in to continue.</h5>
-													<Form onSubmit={handleSubmit}>
+													<Form action="#">
 														<Form.Group>
 															<Form.Label className="mb-2">Email</Form.Label>
-															<Form.Control
-																className="mb-3"
-																placeholder="Enter your email"
-																type="text"
-																value={email}
-																onChange={(e) => setEmail(e.target.value)}
-															/>
+															<Form.Control className="mb-3" placeholder="Enter your email" type="text" />
 														</Form.Group>
 														<Form.Group>
 															<Form.Label className="mb-2">Password</Form.Label>
-															<Form.Control
-																className="mb-3"
-																placeholder="Enter your password"
-																type="password"
-																value={password}
-																onChange={(e) => setPassword(e.target.value)}
-															/>
+															<Form.Control className="mb-3" placeholder="Enter your password" type="password" />
 														</Form.Group>
-														{error && <p className="text-danger">{error}</p>}
-														<Button type="submit" className="btn-main-primary btn-block">Sign In</Button>
+														<Button href={`${import.meta.env.BASE_URL}indexpage`} className="btn-main-primary btn-block">Sign In</Button>
 														<Row className="row-xs social-icons">
 															<Col sm={6} className="">
 																<Button className="btn-block"><i className="fab fa-facebook-f"></i> Signup with Facebook</Button>

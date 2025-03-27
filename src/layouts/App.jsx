@@ -18,14 +18,14 @@ export const RightSideBarclose = () => {
   document.querySelector(".demo_changer").classList.remove("active");
   document.querySelector(".demo_changer").style.right = "-270px";
 
-  if(document.querySelector(".card.search-result") != null){
+  if (document.querySelector(".card.search-result") != null) {
     document.querySelector(".card.search-result").classList.add("d-none")
-  } 
+  }
 };
 
 function App() {
 
-  document.querySelector("body")?.classList.remove('landing-page' ,'horizontalmenu');
+  document.querySelector("body")?.classList.remove('landing-page', 'horizontalmenu');
 
   const SideMenuIconclose = () => {
     document.querySelector(".app")?.classList.remove("sidenav-toggled");
@@ -39,26 +39,26 @@ function App() {
   return (
     <Fragment>
       <Provider store={store}>
-      <div className='horizontalMenucontainer'>
-        <div className="page">
-        <Switcher />
-          <Header />
-          <div className="sticky" style={{ paddingTop: "-63px" }}>
-            <Sidebar />
-          </div>
-          <div className="jumps-prevent" style={{ paddingTop: "63px" }}></div>
-          <div className="main-content app-content" onClick={() => {RightSideBarclose(); SideMenuIconclose()}}>
-            <div className="main-container container-fluid" >
-              <div className='side-app'>
-                <Outlet />
-                </div>
+        <div className='horizontalMenucontainer'>
+          <div className="page">
+            <Switcher />
+            <Header />
+            <div className="sticky" style={{ paddingTop: "-63px" }}>
+              <Sidebar />
             </div>
+            <div className="jumps-prevent" style={{ paddingTop: "63px" }}></div>
+            <div className="main-content app-content" onClick={() => { RightSideBarclose(); SideMenuIconclose() }}>
+              <div className="main-container container-fluid" >
+                <div className='side-app'>
+                  <Outlet />
+                </div>
+              </div>
+            </div>
+            <Footer />
           </div>
-        <Footer />
+          <Rightside />
+
         </div>
-        <Rightside />
-        <BacktoTop />
-      </div>
       </Provider>
     </Fragment>
   )
